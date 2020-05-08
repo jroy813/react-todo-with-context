@@ -49,10 +49,18 @@ export const GlobalProvider = ({ children }) => {
         });
     }
     
+    function addTodo(title) {
+        dispatch({
+            type: 'ADD_TODO',
+            payload: title
+        });
+    }
+    
     return(<GlobalContext.Provider value={{
         todos: state.todos,
         deleteTodo,
-        markComplete
+        addTodo,
+        markComplete,
     }}>
         {children}
     </GlobalContext.Provider>);

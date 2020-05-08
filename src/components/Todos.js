@@ -1,5 +1,6 @@
 import React, { Component, useContext } from 'react';
 import TodoItem from './TodoItem';
+import PropTypes from 'prop-types';
 import { GlobalContext } from '../context/GlobalState';
 
 export const Todos = () => {
