@@ -5,8 +5,17 @@ export const TodoItem = ({ todo }) => {
     const { id, title, completed } = todo;
     const { deleteTodo, markComplete } = useContext(GlobalContext);
     
+    const getStyle = () => {
+        return {
+            background: '#f4f4f4',
+            padding: 10,
+            borderBottom: '1px #ccc dotted',
+            textDecoration: completed ? 'line-through' : 'none'
+        }
+    }
+    
     return (
-        <div style={{textDecoration: completed ? 'line-through' : 'none'}}>
+        <div style={getStyle()}>
             <p>
                 <input type="checkbox" onChange={
                     () => {

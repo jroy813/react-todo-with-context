@@ -23,7 +23,7 @@ export default(state, action) => {
                 console.log('Ran add action');
                 return {
                     ...state,
-                    todos: state.todos.filter(todo => todo.id !== action.payload)
+                    todos: [action.payload, ...state.todos]
                 }
             
         default: 

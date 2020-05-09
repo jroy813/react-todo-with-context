@@ -1,26 +1,35 @@
-import React, { useContext, Component } from 'react';
+import React, { useContext, useState } from 'react';
 import { GlobalContext } from '../context/GlobalState';
 
 export const AddTodo = () => {
     const { addTodo } = useContext(GlobalContext);
-    const state = {
-        title: ''
+    const [text, setText] = useState('');
+    
+    const onChange = e => {
+        e.preventDefault();
+        setText(e.target.value)
     }
     
-    onSubmit = (e) => {
+    const onSubmit = e => {
         e.preventDefault();
-        this.props.addTodo(this.state.title);
-        this.setState({ title: '' })
+        console.log('submitted');
+        const newTodo = {
+            id: Math.floor(Math.random() * 10000000),
+            title: text,
+            completed: false
+        }
+        
+        addTodo(newTodo);
     }
     return (
-        <form onSubmit={this.onSubmit()} style={{display: 'flex'}}>
+        <form onSubmit={onSubmit} style={{display: 'flex'}}>
             <input 
             type="text" 
             name="title" 
             style={{ flex: '10', padding: 10 }}
             placeholder="Add Todo ..." 
-            value={this.state.value}
-            onChange={this.setState({ title: e.target.value })}
+            value={text}
+            onChange={onChange}
             />
             <input 
             type="submit" 
