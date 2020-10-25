@@ -12,9 +12,11 @@ import './App.css';
 class App extends Component {
   
     render() { 
+        const baseName = process.env.NODE_ENV === 'production' ? '/react/todo-context/' : '/';
+        
         return (
             <GlobalProvider>
-                <Router>
+                <Router basename={baseName}>
                     <div className="App">
                         <div className="container">
                             <Header />
